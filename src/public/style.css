@@ -1,0 +1,60 @@
+.wapper-ctn{
+    margin-top: 30px;
+}
+
+div.riskMatrix table tr td {
+        height: 35px;
+        width: 35px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        text-align: center;
+    }
+
+        div.riskMatrix table tr td.green {
+            background: #f0ffeb;
+        } 
+        
+        div.riskMatrix table tr td.darkgreen {
+            background: rgba(0, 128, 0, 0.8);
+        }
+
+        div.riskMatrix table tr td.orange {
+            background: rgba(255, 165, 0, 0.8);
+        }
+
+        div.riskMatrix table tr td.yellow {
+            background: rgba(255, 255, 0, 0.8);
+        }
+
+        div.riskMatrix table tr td.red {
+            background: rgba(255, 0, 0, 0.8);
+        }
+
+    div.riskMatrix span {
+        opacity: 1;
+        border: 2px;
+        text-align: center;
+        color: black;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .dx-fieldset-header {
+        margin: auto;
+        display: table;
+    }
+
+    .rm-continer {
+        margin: 0 auto;
+    }
+
+    .rotate {
+        border: none !important;
+        position: relative;
+        left: -125px;
+        top: -160px;
+        -moz-transform: rotate(-90.0deg);
+        -o-transform: rotate(-90.0deg);
+        -webkit-transform: rotate(-90.0deg);
+        filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);
+        -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)";
+    }

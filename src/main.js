@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const mockDataJson = require('./mockData.json');
 const router = express.Router();
-
+app.use(express.static(__dirname + '/public'));
 router.get('/',function(req,res){
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.header(
