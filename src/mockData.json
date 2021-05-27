@@ -1,0 +1,202 @@
+[
+    {
+        "ImpactLevel": 5,
+        "col": [
+            {
+                "LikelihoodLevel": 1,
+                "CNTBefore": 0,
+                "CNTAfter": 0,
+                "RiskLevel": 5,
+                "Priority": 4
+            },
+            {
+                "LikelihoodLevel": 2,
+                "CNTBefore": 0,
+                "CNTAfter": 0,
+                "RiskLevel": 10,
+                "Priority": 3
+            },
+            {
+                "LikelihoodLevel": 3,
+                "CNTBefore": 0,
+                "CNTAfter": 0,
+                "RiskLevel": 15,
+                "Priority": 2
+            },
+            {
+                "LikelihoodLevel": 4,
+                "CNTBefore": 0,
+                "CNTAfter": 0,
+                "RiskLevel": 20,
+                "Priority": 1
+            },
+            {
+                "LikelihoodLevel": 5,
+                "CNTBefore": 0,
+                "CNTAfter": 0,
+                "RiskLevel": 25,
+                "Priority": 1
+            }
+        ]
+    },
+    {
+        "ImpactLevel": 4,
+        "col": [
+            {
+                "LikelihoodLevel": 1,
+                "CNTBefore": 0,
+                "CNTAfter": 0,
+                "RiskLevel": 4,
+                "Priority": 4
+            },
+            {
+                "LikelihoodLevel": 2,
+                "CNTBefore": 0,
+                "CNTAfter": 0,
+                "RiskLevel": 8,
+                "Priority": 3
+            },
+            {
+                "LikelihoodLevel": 3,
+                "CNTBefore": 0,
+                "CNTAfter": 1,
+                "RiskLevel": 12,
+                "Priority": 2
+            },
+            {
+                "LikelihoodLevel": 4,
+                "CNTBefore": 1,
+                "CNTAfter": 0,
+                "RiskLevel": 16,
+                "Priority": 1
+            },
+            {
+                "LikelihoodLevel": 5,
+                "CNTBefore": 0,
+                "CNTAfter": 0,
+                "RiskLevel": 20,
+                "Priority": 1
+            }
+        ]
+    },
+    {
+        "ImpactLevel": 3,
+        "col": [
+            {
+                "LikelihoodLevel": 1,
+                "CNTBefore": 0,
+                "CNTAfter": 0,
+                "RiskLevel": 3,
+                "Priority": 4
+            },
+            {
+                "LikelihoodLevel": 2,
+                "CNTBefore": 0,
+                "CNTAfter": 0,
+                "RiskLevel": 6,
+                "Priority": 3
+            },
+            {
+                "LikelihoodLevel": 3,
+                "CNTBefore": 0,
+                "CNTAfter": 0,
+                "RiskLevel": 9,
+                "Priority": 3
+            },
+            {
+                "LikelihoodLevel": 4,
+                "CNTBefore": 0,
+                "CNTAfter": 0,
+                "RiskLevel": 12,
+                "Priority": 3
+            },
+            {
+                "LikelihoodLevel": 5,
+                "CNTBefore": 0,
+                "CNTAfter": 0,
+                "RiskLevel": 15,
+                "Priority": 2
+            }
+        ]
+    },
+    {
+        "ImpactLevel": 2,
+        "col": [
+            {
+                "LikelihoodLevel": 1,
+                "CNTBefore": 0,
+                "CNTAfter": 0,
+                "RiskLevel": 2,
+                "Priority": 5
+            },
+            {
+                "LikelihoodLevel": 2,
+                "CNTBefore": 0,
+                "CNTAfter": 0,
+                "RiskLevel": 4,
+                "Priority": 4
+            },
+            {
+                "LikelihoodLevel": 3,
+                "CNTBefore": 0,
+                "CNTAfter": 3,
+                "RiskLevel": 6,
+                "Priority": 4
+            },
+            {
+                "LikelihoodLevel": 4,
+                "CNTBefore": 3,
+                "CNTAfter": 0,
+                "RiskLevel": 8,
+                "Priority": 3
+            },
+            {
+                "LikelihoodLevel": 5,
+                "CNTBefore": 0,
+                "CNTAfter": 0,
+                "RiskLevel": 10,
+                "Priority": 3
+            }
+        ]
+    },
+    {
+        "ImpactLevel": 1,
+        "col": [
+            {
+                "LikelihoodLevel": 1,
+                "CNTBefore": 0,
+                "CNTAfter": 0,
+                "RiskLevel": 1,
+                "Priority": 5
+            },
+            {
+                "LikelihoodLevel": 2,
+                "CNTBefore": 0,
+                "CNTAfter": 0,
+                "RiskLevel": 2,
+                "Priority": 5
+            },
+            {
+                "LikelihoodLevel": 3,
+                "CNTBefore": 0,
+                "CNTAfter": 0,
+                "RiskLevel": 3,
+                "Priority": 5
+            },
+            {
+                "LikelihoodLevel": 4,
+                "CNTBefore": 0,
+                "CNTAfter": 0,
+                "RiskLevel": 4,
+                "Priority": 4
+            },
+            {
+                "LikelihoodLevel": 5,
+                "CNTBefore": 0,
+                "CNTAfter": 0,
+                "RiskLevel": 5,
+                "Priority": 4
+            }
+        ]
+    }
+]
