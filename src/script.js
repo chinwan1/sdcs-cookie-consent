@@ -2,20 +2,21 @@ const inititail = async () => {
   const mockData = await fetch('http://localhost:3000/mockData')
   .then(response => response.json())
   .then(data => { return data });
-
-  this.createMatrixTable("#MatrixBefore",mockData);
-  this.painColorAndContent("#MatrixBefore",mockData, "CNTBefore");
+  const reulstData = this.prepareData(mockData);
+  this.createMatrixTable("#MatrixBefore",reulstData);
+  this.painColorAndContent("#MatrixBefore",reulstData, "CNTBefore");
 }
 
 
 
 
-function createMatrixTable(domId,newArray) {
-  for (row = 0; row < newArray.length; row++) {
+function createMatrixTable(domId,data) {
+  const {storeData: newArray, maxImpactLevel } = data;
+  for (row = 0; row < maxImpactLevel; row++) {
       $(domId).append(createTrOfTable(newArray[row].ImpactLevel));
       for (col = 0; col < newArray[row].col.length; col++) {
           if (col === 0) {
-            $(`${domId} > .row-` + newArray[row].ImpactLevel).append(createYaxis(newArray.length - row));
+            $(`${domId} > .row-` + newArray[row].ImpactLevel).append(createYaxis(maxImpactLevel- row));
           }
           $(`${domId} > .row-` + newArray[row].ImpactLevel).append(createTdOfTableV2(
             row,
@@ -26,6 +27,91 @@ function createMatrixTable(domId,newArray) {
   }
   createEndTable(newArray);
       
+}
+
+function prepareData(newArray) {
+  const sortData = newArray.sort((a,b) => { return  a.ImpactLevel - b.ImpactLevel   });
+  const maxImpactLevel = sortData[sortData.length - 1].ImpactLevel;
+  const maxLikelihoodLevel = this.getMaxLikelihoodLevel(newArray);
+
+  const fileImpactLevel = this.fillBoxImpactLevel(sortData,maxImpactLevel);
+  const resultData =this.filtBoxLikelihoodLevel(fileImpactLevel,maxLikelihoodLevel);
+  return {
+    maxImpactLevel,
+    maxLikelihoodLevel, 
+    storeData: resultData,
+  };
+}
+function filtBoxLikelihoodLevel(sortData,maxLikelihoodLevel) {
+  return sortData.map((item) => {
+    const temps = [];
+    const newData = [];
+    if(item.col && item.col.length) {
+      const revertData = item.col.reverse()
+      for (i = 0; i < maxLikelihoodLevel; i++) {
+        if(revertData[i] && revertData[i].LikelihoodLevel === i + 1)  newData.push(revertData[i]);
+        else {
+          if(revertData[i]) temps.push(revertData[i]);
+          const data  = temps.find((item) => { if(item.LikelihoodLevel === i + 1) return item; })
+          if(data) {
+            newData.push(data); 
+          } else {
+            newData.push({
+              LikelihoodLevel: i + 1,
+              CNTBefore: 0,
+              CNTAfter: 0,
+              RiskLevel: 0,
+              Priority: 0
+           }); 
+    
+          }
+        }
+      } 
+        item.col = newData;
+    } else {
+      item.col = [];
+      for (i = 0; i < maxLikelihoodLevel; i++) {
+        item.col.push({
+          LikelihoodLevel: i + 1,
+          CNTBefore: 0,
+          CNTAfter: 0,
+          RiskLevel: 0,
+          Priority: 0
+        })
+      }
+    }
+    return item;
+  }) 
+
+}
+function fillBoxImpactLevel(sortData,maxImpactLevel) {
+  const newData = [];
+  const temps = [];
+  for (i = 0; i < maxImpactLevel; i++) {
+    if(sortData[i] && sortData[i].ImpactLevel === i + 1)  newData.push(sortData[i]);
+    else {
+      if(sortData[i]) temps.push(sortData[i]);
+      const data  = temps.find((item) => { if(item.ImpactLevel === i + 1) return item; })
+      if(data) {
+        newData.push(data); 
+      } else {
+        newData.push({
+         ImpactLevel: i+1
+       }); 
+
+      }
+    }
+  }
+  return newData;
+}
+function getMaxLikelihoodLevel(newArray) {
+  let max = 0;
+  newArray.map((item) => {
+    const { col } = item;
+    const sort = col.sort((a,b) => { return b.LikelihoodLevel - a.LikelihoodLevel }); 
+    if(sort.length && sort[0].LikelihoodLevel > max) max = sort[0].LikelihoodLevel;
+  })
+  return max;
 }
 function createTrOfTable(rowId) {
   return '<tr class=row-' + rowId + '>' + '</tr>';
@@ -44,7 +130,7 @@ function createEndTable(newArray) {
   + '<td>0</td>'
   + '</tr >'
   + '<tr><td style="border: none;" colspan="' + (newArray.length + 1) + '">Likelihood</td></tr>'
-  + '<tr><td class="rotate" colspan="' + (newArray.length + 1) + '">Impact</td></tr>';
+  + '</tr>';
   if ( newArray.length) {
     $("#MatrixBefore").append(component);
     for (j = 0; j < newArray.length; ++j) {

@@ -1,5 +1,12 @@
-.wapper-ctn{
-    margin-top: 30px;
+
+
+.wrapper-riskMatrix{
+    display: flex;
+}
+.y-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 div.riskMatrix table tr td {
@@ -48,13 +55,7 @@ div.riskMatrix table tr td {
     }
 
     .rotate {
-        border: none !important;
-        position: relative;
-        left: -125px;
-        top: -160px;
         -moz-transform: rotate(-90.0deg);
         -o-transform: rotate(-90.0deg);
         -webkit-transform: rotate(-90.0deg);
-        filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);
-        -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)";
     }
