@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "dev": "nodemon src/main.js",
+    "dev": "node src/criteria.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

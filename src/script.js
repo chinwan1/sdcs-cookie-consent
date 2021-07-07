@@ -4,7 +4,12 @@ const inititail = async () => {
   .then(data => { return data });
   const reulstData = this.prepareData(mockData);
   this.createMatrixTable("#MatrixBefore",reulstData);
-  this.painColorAndContent("#MatrixBefore",reulstData, "CNTBefore");
+  this.painColorAndContent("#MatrixBefore",reulstData.storeData, "CNTBefore");
+
+
+  this.createMatrixTable("#MatrixAfter",reulstData);
+  this.painColorAndContent("#MatrixAfter",reulstData.storeData, "CNTBefore");
+
 }
 
 
@@ -13,19 +18,20 @@ const inititail = async () => {
 function createMatrixTable(domId,data) {
   const {storeData: newArray, maxImpactLevel } = data;
   for (row = 0; row < maxImpactLevel; row++) {
-      $(domId).append(createTrOfTable(newArray[row].ImpactLevel));
+      const select = maxImpactLevel - row;
+      $(domId).append(createTrOfTable(select));
       for (col = 0; col < newArray[row].col.length; col++) {
           if (col === 0) {
-            $(`${domId} > .row-` + newArray[row].ImpactLevel).append(createYaxis(maxImpactLevel- row));
+            $(`${domId} > .row-` + select).append(createYaxis(maxImpactLevel- row));
           }
-          $(`${domId} > .row-` + newArray[row].ImpactLevel).append(createTdOfTableV2(
+          $(`${domId} > .row-` + select).append(createTdOfTableV2(
             row,
             col,
             newArray.length, 
           ));
       }
   }
-  createEndTable(newArray);
+  createEndTable(domId,newArray);
       
 }
 
@@ -125,16 +131,16 @@ function createXaxis(rowId) {
 function createTdOfTableV2(row, col, amountRow) {
   return '<td class=' + (amountRow - row) + '-' + (col + 1) + '><span>' + '' + '</span></td>';
 }
-function createEndTable(newArray) {
+function createEndTable(domId,newArray) {
   const component = '<tr class=row-0>'
   + '<td>0</td>'
   + '</tr >'
   + '<tr><td style="border: none;" colspan="' + (newArray.length + 1) + '">Likelihood</td></tr>'
   + '</tr>';
   if ( newArray.length) {
-    $("#MatrixBefore").append(component);
+    $(domId).append(component);
     for (j = 0; j < newArray.length; ++j) {
-        $('.row-0').append(createXaxis(j + 1));
+        $(`${domId} >.row-0`).append(createXaxis(j + 1));
     }
   }
 }
@@ -147,7 +153,7 @@ function painColorAndContent(domId,newArray, prop) {
       if(newArray[row].col[col][`${prop}`] === 0) {
         $(select).text('');
       } else {
-        console.log(newArray[row]);
+        console.log(select);
         $(select).text(newArray[row].col[col][`${prop}`]);
 
       }
